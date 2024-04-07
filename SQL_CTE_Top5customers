@@ -1,0 +1,30 @@
+### This query retrived the top 5 spending customers within the top 10 cities listed from the last query
+WITH top10country AS (
+SELECT D.country,
+COUNT (A.customer_id) AS total_customer
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+GROUP BY country 
+ORDER BY total_customer DESC LIMIT 10),
+top10city AS (
+SELECT C.city,D.country,
+COUNT (A.customer_id) AS total_customer
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+WHERE D.country IN (SELECT country FROM top10country)
+GROUP BY C.city, D.country 
+ORDER BY total_customer DESC LIMIT 10)
+SELECT A.customer_id,A.first_name,A.last_name,C.city,D.country,
+SUM (E.amount) AS total_paid
+FROM customer A
+INNER JOIN payment E ON A.customer_id = E.customer_id
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+WHERE C.city IN (SELECT city FROM top10city)
+GROUP BY 1,2,3,4,5
+ORDER BY total_paid DESC LIMIT 5
