@@ -4,11 +4,11 @@ Data-driven analysis to answer critical business queries for their business stra
 Rockbuster Stealth LLC is a movie rental company that used to have stores worldwide. Facing stiff competition from streaming services such as Netflix and Amazon Prime, the Rockbuster Stealth management team is planning to use I ts existing movie licenses to launch an online video rental service to stay competitive.
 # Key Questions and Objectives
 Here are the main questions Rockbuster's BOM asks me to answer:
-● Which movies contributed the most/least to revenue gain?
-● What was the average rental duration for all videos?
-● Which countries are Rockbuster customers based i n?
-● Where are customers with a high lifetime value based?
-● Do sales figures vary between geographic regions?
+* Which movies contributed the most/least to revenue gain?
+* What was the average rental duration for all videos?
+* Which countries are Rockbuster customers based i n?
+* Where are customers with a high lifetime value based?
+* Do sales figures vary between geographic regions?
 # Dataset
 The dataset includes information on Rockbuster's film inventory, customers, and transactions, loaded into a PostgreSQL database. It's structured to reflect real-world business scenarios and relationships between different data tables.
 [Rockbuster Data Set](https://github.com/QuinnHa1101/RockbusterStealthDataAnalysis/files/14896807/Rockbuster.Excel.Data.xls)
