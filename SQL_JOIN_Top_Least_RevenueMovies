@@ -1,0 +1,20 @@
+### This query retrieves the top 10 revenue movies
+SELECT A.title,   
+SUM (D.amount) AS revenue
+FROM film A
+INNER JOIN inventory B ON A.film_id = B.film_id
+INNER JOIN rental C ON B.inventory_id = C.inventory_id
+INNER JOIN payment D ON C.rental_id = D.rental_id
+GROUP BY A.title
+ORDER BY revenue DESC LIMIT 10
+
+### This query retrieves the bottom 10 revenue movies
+SELECT A.title,	
+	   SUM (D.amount) AS revenue
+FROM film A	
+INNER JOIN inventory B ON A.film_id = B.film_id	
+INNER JOIN rental C ON B.inventory_id = C.inventory_id	
+INNER JOIN payment D ON C.rental_id = D.rental_id	
+GROUP BY A.title	
+ORDER BY revenue ASC LIMIT 10	
+### I use these queries to answer the first key question
